@@ -1,0 +1,54 @@
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Name = "TBOStyleMenu"
+
+-- Create the main frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 350, 0, 400)  -- Adjust size
+mainFrame.Position = UDim2.new(0.5, -175, 0.5, -200)  -- Center the frame
+mainFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)  -- Dark gray color
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+
+-- Add a title bar
+local titleBar = Instance.new("Frame")
+titleBar.Size = UDim2.new(1, 0, 0, 40)
+titleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)  -- Darker gray
+titleBar.BorderSizePixel = 0
+titleBar.Parent = mainFrame
+
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 1, 0)
+titleLabel.Text = "TBO-Style Menu"
+titleLabel.TextSize = 18
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Parent = titleBar
+
+-- Add a close button
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 40, 1, 0)
+closeButton.Position = UDim2.new(1, -40, 0, 0)
+closeButton.Text = "X"
+closeButton.TextSize = 18
+closeButton.Font = Enum.Font.GothamBold
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.BackgroundColor3 = Color3.fromRGB(150, 0, 0)  -- Red color
+closeButton.BorderSizePixel = 0
+closeButton.Parent = titleBar
+
+-- Add buttons to the main menu
+for i = 1, 5 do
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 300, 0, 50)
+    button.Position = UDim2.new(0.5, -150, 0, 50 + (i - 1) * 60)
+    button.Text = "Button " .. i
+    button.TextSize = 18
+    button.Font = Enum.Font.Gotham
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)  -- Dark button color
+    button.BorderSizePixel = 0
+    button.Parent = mainFrame
+end
