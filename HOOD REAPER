@@ -1,54 +1,192 @@
--- Create the ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-screenGui.Name = "TBOStyleMenu"
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Name = "Hood Reaper"
 
--- Create the main frame
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 350, 0, 400)  -- Adjust size
-mainFrame.Position = UDim2.new(0.5, -175, 0.5, -200)  -- Center the frame
-mainFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)  -- Dark gray color
-mainFrame.BorderSizePixel = 0
-mainFrame.Parent = screenGui
+mainFrame.Size = UDim2.new(0, 500, 0, 600)
+mainFrame.Position = UDim2.new(0, 50, 0, 50)
+mainFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+mainFrame.Parent = ScreenGui
 
--- Add a title bar
-local titleBar = Instance.new("Frame")
-titleBar.Size = UDim2.new(1, 0, 0, 40)
-titleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)  -- Darker gray
-titleBar.BorderSizePixel = 0
-titleBar.Parent = mainFrame
+local tabsContainer = Instance.new("Frame")
+tabsContainer.Size = UDim2.new(0, 500, 0, 50)
+tabsContainer.Position = UDim2.new(0, 0, 0, 0)
+tabsContainer.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+tabsContainer.Parent = mainFrame
 
-local titleLabel = Instance.new("TextLabel")
-titleLabel.Size = UDim2.new(1, 0, 1, 0)
-titleLabel.Text = "TBO-Style Menu"
-titleLabel.TextSize = 18
-titleLabel.Font = Enum.Font.GothamBold
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleLabel.BackgroundTransparency = 1
-titleLabel.Parent = titleBar
+local menuTabButton = Instance.new("TextButton")
+menuTabButton.Size = UDim2.new(0, 100, 0, 50)
+menuTabButton.Text = "Menu"
+menuTabButton.Parent = tabsContainer
+menuTabButton.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
 
--- Add a close button
-local closeButton = Instance.new("TextButton")
-closeButton.Size = UDim2.new(0, 40, 1, 0)
-closeButton.Position = UDim2.new(1, -40, 0, 0)
-closeButton.Text = "X"
-closeButton.TextSize = 18
-closeButton.Font = Enum.Font.GothamBold
-closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-closeButton.BackgroundColor3 = Color3.fromRGB(150, 0, 0)  -- Red color
-closeButton.BorderSizePixel = 0
-closeButton.Parent = titleBar
+local locksTabButton = Instance.new("TextButton")
+locksTabButton.Size = UDim2.new(0, 100, 0, 50)
+locksTabButton.Text = "Locks"
+locksTabButton.Position = UDim2.new(0, 100, 0, 0)
+locksTabButton.Parent = tabsContainer
+locksTabButton.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
 
--- Add buttons to the main menu
-for i = 1, 5 do
-    local button = Instance.new("TextButton")
-    button.Size = UDim2.new(0, 300, 0, 50)
-    button.Position = UDim2.new(0.5, -150, 0, 50 + (i - 1) * 60)
-    button.Text = "Button " .. i
-    button.TextSize = 18
-    button.Font = Enum.Font.Gotham
-    button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)  -- Dark button color
-    button.BorderSizePixel = 0
-    button.Parent = mainFrame
+local susTabButton = Instance.new("TextButton")
+susTabButton.Size = UDim2.new(0, 100, 0, 50)
+susTabButton.Text = "Sus"
+susTabButton.Position = UDim2.new(0, 200, 0, 0)
+susTabButton.Parent = tabsContainer
+susTabButton.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+
+local miscTabButton = Instance.new("TextButton")
+miscTabButton.Size = UDim2.new(0, 100, 0, 50)
+miscTabButton.Text = "Misc"
+miscTabButton.Position = UDim2.new(0, 300, 0, 0)
+miscTabButton.Parent = tabsContainer
+miscTabButton.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+
+local shopTabButton = Instance.new("TextButton")
+shopTabButton.Size = UDim2.new(0, 100, 0, 50)
+shopTabButton.Text = "Shop"
+shopTabButton.Position = UDim2.new(0, 400, 0, 0)
+shopTabButton.Parent = tabsContainer
+shopTabButton.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+
+local cframeTabButton = Instance.new("TextButton")
+cframeTabButton.Size = UDim2.new(0, 100, 0, 50)
+cframeTabButton.Text = "CFrame"
+cframeTabButton.Position = UDim2.new(0, 500, 0, 0)
+cframeTabButton.Parent = tabsContainer
+cframeTabButton.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+
+local menuTab = Instance.new("Frame")
+menuTab.Size = UDim2.new(0, 500, 0, 550)
+menuTab.Position = UDim2.new(0, 0, 0, 50)
+menuTab.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+menuTab.Visible = true
+menuTab.Parent = mainFrame
+
+local locksTab = Instance.new("Frame")
+locksTab.Size = UDim2.new(0, 500, 0, 550)
+locksTab.Position = UDim2.new(0, 0, 0, 50)
+locksTab.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+locksTab.Visible = false
+locksTab.Parent = mainFrame
+
+local susTab = Instance.new("Frame")
+susTab.Size = UDim2.new(0, 500, 0, 550)
+susTab.Position = UDim2.new(0, 0, 0, 50)
+susTab.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+susTab.Visible = false
+susTab.Parent = mainFrame
+
+local miscTab = Instance.new("Frame")
+miscTab.Size = UDim2.new(0, 500, 0, 550)
+miscTab.Position = UDim2.new(0, 0, 0, 50)
+miscTab.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+miscTab.Visible = false
+miscTab.Parent = mainFrame
+
+local shopTab = Instance.new("Frame")
+shopTab.Size = UDim2.new(0, 500, 0, 550)
+shopTab.Position = UDim2.new(0, 0, 0, 50)
+shopTab.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+shopTab.Visible = false
+shopTab.Parent = mainFrame
+
+local cframeTab = Instance.new("Frame")
+cframeTab.Size = UDim2.new(0, 500, 0, 550)
+cframeTab.Position = UDim2.new(0, 0, 0, 50)
+cframeTab.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+cframeTab.Visible = false
+cframeTab.Parent = mainFrame
+
+local function showTab(tab)
+    menuTab.Visible = false
+    locksTab.Visible = false
+    susTab.Visible = false
+    miscTab.Visible = false
+    shopTab.Visible = false
+    cframeTab.Visible = false
+
+    tab.Visible = true
 end
+
+menuTabButton.MouseButton1Click:Connect(function() showTab(menuTab) end)
+locksTabButton.MouseButton1Click:Connect(function() showTab(locksTab) end)
+susTabButton.MouseButton1Click:Connect(function() showTab(susTab) end)
+miscTabButton.MouseButton1Click:Connect(function() showTab(miscTab) end)
+shopTabButton.MouseButton1Click:Connect(function() showTab(shopTab) end)
+cframeTabButton.MouseButton1Click:Connect(function() showTab(cframeTab) end)
+
+-- Person User Button
+local personUserButton = Instance.new("TextButton")
+personUserButton.Size = UDim2.new(0, 400, 0, 50)
+personUserButton.Position = UDim2.new(0, 50, 0, 0)
+personUserButton.Text = "Person User"
+personUserButton.Parent = menuTab
+
+personUserButton.MouseButton1Click:Connect(function()
+    local targetPlayerName = "targetUsername"
+    local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
+    if targetPlayer then
+        local targetCharacter = targetPlayer.Character
+        if targetCharacter then
+            targetCharacter.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        end
+    else
+        print("Target player not found!")
+    end
+end)
+
+-- Bend Button
+local bendButton = Instance.new("TextButton")
+bendButton.Size = UDim2.new(0, 400, 0, 50)
+bendButton.Position = UDim2.new(0, 50, 0, 60)
+bendButton.Text = "Bend"
+bendButton.Parent = menuTab
+
+bendButton.MouseButton1Click:Connect(function()
+    local targetPlayerName = "targetUsername"
+    local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
+    if targetPlayer then
+        local targetCharacter = targetPlayer.Character
+        if targetCharacter then
+            targetCharacter.HumanoidRootPart.CFrame = targetCharacter.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+            local bat = Instance.new("Tool")
+            bat.Name = "Bat"
+            bat.Parent = targetCharacter
+
+            local animation = Instance.new("Animation")
+            animation.AnimationId = "rbxassetid://BendAnimationID"
+            targetCharacter.Humanoid:LoadAnimation(animation):Play()
+
+            local sound = Instance.new("Sound")
+            sound.SoundId = "rbxassetid://BendSoundID"
+            sound.Parent = targetCharacter.HumanoidRootPart
+            sound:Play()
+        end
+    else
+        print("Target player not found!")
+    end
+end)
+
+-- Horizon Lock Button
+local horizonLockButton = Instance.new("TextButton")
+horizonLockButton.Size = UDim2.new(0, 400, 0, 50)
+horizonLockButton.Position = UDim2.new(0, 50, 0, 0)
+horizonLockButton.Text = "Horizon Lock"
+horizonLockButton.Parent = locksTab
+
+horizonLockButton.MouseButton1Click:Connect(function()
+    -- Horizon lock functionality here
+end)
+
+-- Sus Button
+local susButton = Instance.new("TextButton")
+susButton.Size = UDim2.new(0, 400, 0, 50)
+susButton.Position = UDim2.new(0, 50, 0, 0)
+susButton.Text = "Sus Action"
+susButton.Parent = susTab
+
+susButton.MouseButton1Click:Connect(function()
+    -- Add sus actions here
+end)
+
+-- Additional functionality for other tabs (
